@@ -28,3 +28,6 @@
 [submodule "home/.vim/bundle/vim-ruby"]
 	path = home/.vim/bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "home/.vim/bundle/vim-ack"]
+	path = home/.vim/bundle/vim-ack
+	url = git://github.com/mileszs/ack.vim.git
