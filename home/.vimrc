@@ -28,8 +28,8 @@ let mapleader = ","
 set smarttab
 set expandtab
 set autoindent
-set shiftwidth=2 
-set tabstop=2 
+set shiftwidth=2
+set tabstop=2
 set autoindent smartindent
 
 " Line Wrapping
@@ -37,8 +37,8 @@ set nowrap
 set linebreak             " Wrap at word
 
 " Search results
-set incsearch							" incremental searching
-set ignorecase						" case insensitive searching
+set incsearch             " incremental searching
+set ignorecase            " case insensitive searching
 set smartcase
 
 " Toggle search results with spacebar
@@ -76,20 +76,20 @@ set showmatch
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
- 
+
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
- 
+
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
     autocmd!
-   
+
     " For all text files set 'textwidth' to 78 characters.
     autocmd FileType text setlocal textwidth=78
-   
+
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
     " (happens when dropping a file on gvim).
@@ -153,7 +153,7 @@ if has('statusline')
   " Switch between the normal and vim-debug modes in the status line
   nmap _ds :call SetStatusLineStyle()<CR>
   call SetStatusLineStyle()
-  
+
   " Window title
   if has('title')
     set titlestring=%t%(\ [%R%M]%)
@@ -172,3 +172,6 @@ endif
 
 
 au BufNewFile,BufRead *.prawn set filetype=ruby
+
+" Clean up whitespace
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
