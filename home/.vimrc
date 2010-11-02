@@ -1,14 +1,29 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible          " We're running Vim, not Vi!
 
-" Update pathogen bundles
+" http://github.com/tpope/vim-pathogen
+call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+
+" map leader to comma
+let mapleader = ","
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
 " keep more history
 set history=100
+
+" show hidden buffers
+set hidden
+
+" don't beep
+set visualbell
+set noerrorbells
 
 " Syntax highlighting
 " Switch syntax highlighting on, when the terminal has colors
@@ -20,9 +35,6 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   set hlsearch
   colorscheme elflord
 endif
-
-" map leader to comma
-let mapleader = ","
 
 " Indentation and Tab handling
 set smarttab
@@ -143,7 +155,7 @@ if has('statusline')
   " %=    right-align following items
   " #%n    buffer number
   " %l/%L,%c%V  line number, total number of lines, and column number
-  function SetStatusLineStyle()
+  fun! SetStatusLineStyle()
     if &stl == '' || &stl =~ 'synID'
       let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%=#%n %l/%L,%c%V "
     else
