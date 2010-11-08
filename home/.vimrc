@@ -15,6 +15,12 @@ set backspace=indent,eol,start
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+" Toggle NERDTree
+nmap <silent> <Leader>n :NERDTreeToggle<CR>
+
+" A better escape?
+imap jj <Esc>
+
 " keep more history
 set history=100
 
@@ -157,7 +163,7 @@ if has('statusline')
   " %l/%L,%c%V  line number, total number of lines, and column number
   fun! SetStatusLineStyle()
     if &stl == '' || &stl =~ 'synID'
-      let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%=#%n %l/%L,%c%V "
+      let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%{fugitive#statusline()}%=#%n %l/%L,%c%V "
     else
       let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]} (%{synIDattr(synID(line('.'),col('.'),0),'name')})%=#%n %l/%L,%c%V "
     endif

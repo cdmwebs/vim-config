@@ -11,14 +11,11 @@ set guifont=Menlo:h12.00
 " Use console dialogs
 set guioptions+=c
 
-" turns the toolbar on
-set go+=T
+" turns the toolbar off
+set go-=T
 
 " tab labels
 set guitablabel=%t
-
-" turns the toolbar off
-"set go-=T
 
 " add a cursorline
 set cursorline
@@ -29,5 +26,5 @@ colorscheme railscasts
 " w00t
 set bg=dark
 if &background == "dark"
-    set transp=3
+    set transparency=5
 endif
