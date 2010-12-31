@@ -85,12 +85,13 @@ set splitright
 set shortmess=atI
 
 set ruler
-set undolevels=100
+set undolevels=1000
 
-" turning off line numbers for now
-"set number
+set relativenumber
 
 set showmatch
+
+set wildmenu
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
