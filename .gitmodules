@@ -37,3 +37,6 @@
 [submodule "home/.vim/bundle/fugitive"]
 	path = home/.vim/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "home/.vim/bundle/align"]
+	path = home/.vim/bundle/align
+	url = https://github.com/vim-scripts/Align.vim.git
