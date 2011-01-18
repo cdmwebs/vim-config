@@ -40,3 +40,6 @@
 [submodule "home/.vim/bundle/align"]
 	path = home/.vim/bundle/align
 	url = https://github.com/tsaleh/vim-align.git
+[submodule "home/.vim/bundle/rubytest"]
+	path = home/.vim/bundle/rubytest
+	url = git://github.com/janx/vim-rubytest.git
