@@ -20,10 +20,14 @@ set guitablabel=%t
 " add a cursorline
 set cursorline
 
-colorscheme railscasts
+colorscheme vwilight
+
+" maximize
+set lines=80
+set columns=250
 
 " w00t
 set bg=dark
 if &background == "dark"
-    set transparency=5
+    set transparency=1
 endif

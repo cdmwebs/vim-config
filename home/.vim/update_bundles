@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
 vim_org_scripts = [
-  ["jquery",        "12107", "syntax"],
-  ["json",          "10853", "syntax"],
-  ["railscasts",    "8379",  "colors"],
+  ["jquery",     "12107", "syntax"], 
+  ["json",       "10853", "syntax"], 
+  ["railscasts", "8379" , "colors"], 
+  ["vibrantink", "10117", "colors"] 
 ]
 
 require 'fileutils'
@@ -21,4 +22,17 @@ vim_org_scripts.each do |name, script_id, script_type|
   File.open(local_file, "w") do |file|
     file << open("http://www.vim.org/scripts/download_script.php?src_id=#{script_id}").read
   end
+end
+
+
+name = "vwilight"
+script_type = "colors"
+local_file = File.join(name, script_type, "#{name}.vim")
+
+puts "  Downloading #{name}"
+FileUtils.rm_rf name
+FileUtils.mkdir_p(File.dirname(local_file))
+
+File.open(local_file, "w") do |file|
+  file << open("https://gist.github.com/raw/796172/724c7ca237a7f6b8d857c4ac2991cfe5ffb18087/vwilight.vim").read
 end
