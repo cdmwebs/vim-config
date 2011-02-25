@@ -194,8 +194,3 @@ au BufNewFile,BufRead *.prawn set filetype=ruby
 
 " Clean up whitespace
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
-
-" rubytest customization
-let g:rubytest_cmd_test = "$MY_RUBY_HOME/bin/ruby -Itest -rtest_helper %p"
-let g:rubytest_cmd_testcase = "$MY_RUBY_HOME/bin/ruby -Itest -rtest_helper %p -n '/%c/'"
-map <Leader>L <Plug>RubyTestRun
