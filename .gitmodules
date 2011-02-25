@@ -43,3 +43,6 @@
 [submodule "home/.vim/bundle/rubytest"]
 	path = home/.vim/bundle/rubytest
 	url = git://github.com/janx/vim-rubytest.git
+[submodule "home/.vim/bundle/supertab"]
+	path = home/.vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
