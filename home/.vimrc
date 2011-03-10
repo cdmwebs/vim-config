@@ -66,7 +66,7 @@ map <Space> :set hlsearch!<cr>
 map Q gq
 
 " catch trailing whitespace
-set listchars=tab:>-,trail:·,eol:$
+set list listchars=tab:\ \ ,trail:·
 nmap <silent> <leader>s :set nolist!<CR>
 
 " Swapfiles. Fuck 'em.
@@ -86,8 +86,6 @@ set shortmess=atI
 
 set ruler
 set undolevels=1000
-
-set relativenumber
 
 set showmatch
 
