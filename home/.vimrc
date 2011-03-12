@@ -86,9 +86,9 @@ set shortmess=atI
 
 set ruler
 set undolevels=1000
+set number
 
 set showmatch
-
 set wildmenu
 
 " Only do this part when compiled with support for autocommands.
@@ -162,7 +162,7 @@ if has('statusline')
   " %l/%L,%c%V  line number, total number of lines, and column number
   fun! SetStatusLineStyle()
     if &stl == '' || &stl =~ 'synID'
-      let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%{fugitive#statusline()}%=#%n %l/%L,%c%V "
+      let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%{fugitive#statusline()}%{SyntasticStatuslineFlag()}%=#%n %l/%L,%c%V "
     else
       let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]} (%{synIDattr(synID(line('.'),col('.'),0),'name')})%=#%n %l/%L,%c%V "
     endif
@@ -192,3 +192,6 @@ au BufNewFile,BufRead *.prawn set filetype=ruby
 
 " Clean up whitespace
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+
+" syntastic
+let g:syntastic_enable_signs=1
