@@ -12,7 +12,7 @@ let g:colors_name = "Twilight"
 
 hi Cursor  guifg=NONE guibg=#fffd00 gui=NONE
 hi Visual  guifg=NONE guibg=#919309 gui=NONE
-hi CursorLine  guifg=NONE guibg=#1b1b1b gui=NONE
+hi CursorLine  guifg=NONE guibg=#232323 gui=NONE
 hi CursorColumn  guifg=NONE guibg=#1b1b1b gui=NONE
 hi LineNr  guifg=#868686 guibg=#141414 gui=NONE
 hi VertSplit  guifg=#3f3f3f guibg=#3f3f3f gui=NONE
