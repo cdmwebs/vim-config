@@ -52,3 +52,9 @@
 [submodule "home/.vim/bundle/ruby-runner"]
 	path = home/.vim/bundle/ruby-runner
 	url = git://github.com/henrik/vim-ruby-runner.git
+[submodule "home/.vim/bundle/jellybeans"]
+	path = home/.vim/bundle/jellybeans
+	url = git://github.com/nanotech/jellybeans.vim.git
+[submodule "home/.vim/bundle/solarized"]
+	path = home/.vim/bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
