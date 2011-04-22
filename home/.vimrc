@@ -195,3 +195,9 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 
 " syntastic
 let g:syntastic_enable_signs=1
+
+" taglist
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+let Tlist_WinWidth = 50
+map <leader>a :TlistToggle<cr>
+map <leader>A :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
