@@ -40,9 +40,6 @@
 [submodule "home/.vim/bundle/align"]
 	path = home/.vim/bundle/align
 	url = https://github.com/tsaleh/vim-align.git
-[submodule "home/.vim/bundle/supertab"]
-	path = home/.vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "home/.vim/bundle/coffee-script"]
 	path = home/.vim/bundle/coffee-script
 	url = git://github.com/kchmck/vim-coffee-script.git
@@ -58,3 +55,6 @@
 [submodule "home/.vim/bundle/solarized"]
 	path = home/.vim/bundle/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "home/.vim/bundle/taglist"]
+	path = home/.vim/bundle/taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
