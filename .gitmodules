@@ -19,15 +19,18 @@
 [submodule "home/.vim/bundle/ragtag"]
 	path = home/.vim/bundle/ragtag
 	url = git://github.com/tpope/vim-ragtag.git
+  ignore = dirty
 [submodule "home/.vim/bundle/rails"]
 	path = home/.vim/bundle/rails
 	url = git://github.com/tpope/vim-rails.git
 [submodule "home/.vim/bundle/ruby"]
 	path = home/.vim/bundle/ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
+  ignore = dirty
 [submodule "home/.vim/bundle/surround"]
 	path = home/.vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
+  ignore = dirty
 [submodule "home/.vim/bundle/vividchalk"]
 	path = home/.vim/bundle/vividchalk
 	url = git://github.com/tpope/vim-vividchalk.git
@@ -46,6 +49,7 @@
 [submodule "home/.vim/bundle/syntastic"]
 	path = home/.vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
+  ignore = dirty
 [submodule "home/.vim/bundle/ruby-runner"]
 	path = home/.vim/bundle/ruby-runner
 	url = git://github.com/henrik/vim-ruby-runner.git
