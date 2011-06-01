@@ -39,8 +39,8 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   " sync syntax from the start of the file
   syntax sync fromstart
   set hlsearch
-  colorscheme elflord
 endif
+
 
 " Indentation and Tab handling
 set smarttab
