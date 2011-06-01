@@ -58,3 +58,6 @@
 [submodule "home/.vim/bundle/taglist"]
 	path = home/.vim/bundle/taglist
 	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule "home/.vim/bundle/css-color"]
+	path = home/.vim/bundle/css-color
+	url = git://github.com/skammer/vim-css-color.git
