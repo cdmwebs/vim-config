@@ -11,6 +11,10 @@ set guifont=Menlo:h14.00
 " Use console dialogs
 set guioptions+=c
 
+" hide scrollbars
+set guioptions-=L
+set guioptions-=r
+
 " turns the toolbar off
 set go-=T
 
