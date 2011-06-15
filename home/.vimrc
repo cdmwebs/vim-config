@@ -41,6 +41,8 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   set hlsearch
 endif
 
+set bg=dark
+colorscheme delek
 
 " Indentation and Tab handling
 set smarttab

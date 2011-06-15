@@ -24,14 +24,14 @@ set guitablabel=%t
 " add a cursorline
 set cursorline
 
-colorscheme vwilight
-
 " maximize
 set lines=80
 set columns=250
 
 " w00t
-set bg=dark
+set bg=light
 if &background == "dark"
     set transparency=1
 endif
+colorscheme solarized
+
