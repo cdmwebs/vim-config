@@ -65,3 +65,6 @@
 [submodule "home/.vim/bundle/tabular"]
 	path = home/.vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "home/.vim/bundle/mustache"]
+	path = home/.vim/bundle/mustache
+	url = https://github.com/juvenn/mustache.vim.git
