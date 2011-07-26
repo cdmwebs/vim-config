@@ -28,12 +28,16 @@ set cursorline
 set lines=80
 set columns=250
 
-" w00t
-set bg=light
-if &background == "dark"
-    set transparency=1
+let hour = strftime("%H")
+if 6 <= hour && hour < 18
+  " daytime!
+  set bg=light
+  colorscheme solarized
+else
+  " nighttime!
+  set bg=dark
+  colorscheme solarized
 endif
-colorscheme solarized
 
 if has("gui_macvim")
   macmenu &File.New\ Tab key=<nop>
