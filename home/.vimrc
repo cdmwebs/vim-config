@@ -92,6 +92,7 @@ set number
 
 set showmatch
 set wildmenu
+set wildignore+=*.o,*.obj,.git,vendor/ruby/**,vendor/jruby/**,compiled
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -133,8 +134,8 @@ if has("folding")
   set foldenable
   set foldmethod=syntax
   set foldlevel=3
-  set foldnestmax=2
-  set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
+  " set foldnestmax=2
+  " set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
   set foldcolumn=0
 
   " automatically open folds at the starting cursor position
@@ -203,3 +204,11 @@ let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_WinWidth = 50
 map <leader>a :TlistToggle<cr>
 map <leader>A :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+" completion
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+      \ "\<lt>C-n>" :
+      \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+      \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+      \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+imap <C-@> <C-Space>
