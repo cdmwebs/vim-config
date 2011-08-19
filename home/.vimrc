@@ -217,3 +217,7 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
       \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
       \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
+
+" command-t settings
+let g:CommandTMaxHeight=20
+let g:CommandTMatchWindowReverse=1
