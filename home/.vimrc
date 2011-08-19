@@ -196,8 +196,7 @@ endif
 "noremap  <Right> ""
 "noremap! <Right> <Esc>
 
-
-au BufNewFile,BufRead *.prawn set filetype=ruby
+au BufNewFile,BufRead *.prawn,Sitefile set filetype=ruby
 
 " Clean up whitespace
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
