@@ -41,8 +41,14 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   set hlsearch
 endif
 
-set bg=light
-colorscheme desert
+if (&t_Co == 256)
+  set bg=dark
+  colorscheme railscasts
+  highlight CursorLine cterm=NONE ctermbg=236
+  set cursorline!
+else
+  colorscheme desert
+endif
 
 " Indentation and Tab handling
 set smarttab
