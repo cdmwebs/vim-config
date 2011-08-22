@@ -43,7 +43,7 @@ endif
 
 if (&t_Co == 256)
   set bg=dark
-  colorscheme railscasts
+  colorscheme Tomorrow-Night
   highlight CursorLine cterm=NONE ctermbg=236
   set cursorline!
 else

@@ -31,8 +31,8 @@ set columns=250
 let hour = strftime("%H")
 if 6 <= hour && hour < 18
   " daytime!
-  set bg=light
-  colorscheme solarized
+  set bg=dark
+  colorscheme Tomorrow-Night
 else
   " nighttime!
   set bg=dark
