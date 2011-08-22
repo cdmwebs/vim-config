@@ -221,3 +221,12 @@ imap <C-@> <C-Space>
 " command-t settings
 let g:CommandTMaxHeight=20
 let g:CommandTMatchWindowReverse=1
+noremap <leader>f :CommandTFlush<CR>
+
+" undo
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+
+set autoread
