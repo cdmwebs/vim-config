@@ -1,9 +1,11 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible          " We're running Vim, not Vi!
 
+source ~/.vim/bundle/pathogen/autoload/pathogen.vim
+
 " http://github.com/tpope/vim-pathogen
 call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 " map leader to comma
 let mapleader = ","
