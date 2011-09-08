@@ -47,6 +47,8 @@ if (&t_Co == 256)
   set bg=dark
   colorscheme Tomorrow-Night
   highlight CursorLine cterm=NONE ctermbg=236
+  highlight StatusLine term=reverse ctermfg=15 ctermbg=23 guifg=#FFFFFF guibg=#005f5f
+  highlight StatusLineNC cterm=NONE ctermbg=236
   set cursorline!
 else
   colorscheme desert
@@ -153,51 +155,7 @@ endif
 " Load matchit (% to bounce from do to end, etc.)
 runtime! macros/matchit.vim
 
-" Status line configuration (from tomasr)
-" ---------------------------------------
-set laststatus=2 " Always show status line
-if has('statusline')
-  " Status line detail:
-  " %f    file path
-  " %y    file type between braces (if defined)
-  " %([%R%M]%)  read-only, modified and modifiable flags between braces
-  " %{'!'[&ff=='default_file_format']}
-  "      shows a '!' if the file format is not the platform
-  "      default
-  " %{'$'[!&list]}  shows a '*' if in list mode
-  " %{'~'[&pm=='']}  shows a '~' if in patchmode
-  " (%{synIDattr(synID(line('.'),col('.'),0),'name')})
-  "      only for debug : display the current syntax item name
-  " %=    right-align following items
-  " #%n    buffer number
-  " %l/%L,%c%V  line number, total number of lines, and column number
-  fun! SetStatusLineStyle()
-    if &stl == '' || &stl =~ 'synID'
-      let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%{fugitive#statusline()}%{SyntasticStatuslineFlag()}%=#%n %l/%L,%c%V "
-    else
-      let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]} (%{synIDattr(synID(line('.'),col('.'),0),'name')})%=#%n %l/%L,%c%V "
-    endif
-  endfunc
-  " Switch between the normal and vim-debug modes in the status line
-  nmap _ds :call SetStatusLineStyle()<CR>
-  call SetStatusLineStyle()
-
-  " Window title
-  if has('title')
-    set titlestring=%t%(\ [%R%M]%)
-  endif
-endif
-
-" Quit using the arrow keys, dumbass
-"noremap  <Up> ""
-"noremap! <Up> <Esc>
-"noremap  <Down> ""
-"noremap! <Down> <Esc>
-"noremap  <Left> ""
-"noremap! <Left> <Esc>
-"noremap  <Right> ""
-"noremap! <Right> <Esc>
-
+" These are ruby files
 au BufNewFile,BufRead *.prawn,Sitefile set filetype=ruby
 
 " Clean up whitespace
@@ -231,4 +189,46 @@ set undofile
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 
+" always load buffers from disk
 set autoread
+
+" Status Line
+set laststatus=2
+set statusline=%m                            " Modified Flag
+set statusline+=%r                           " Readonly Flag
+set statusline+=\                            " Space
+set statusline+=%<                           " Truncate on the left side of text if too long
+set statusline+=%t                           " File name (Tail)
+set statusline+=%#warningmsg#                " Set warning highlighting
+set statusline+=%{SyntasticStatuslineFlag()} " Show syntax errors provided by syntastic plugin
+set statusline+=%*                           " clear highlighting
+set statusline+=%=                           " Right Align
+set statusline+=%{ShowSpell()}               " Show whether or not spell is currently on
+set statusline+=\                            " Space
+set statusline+=%{ShowWrap()}                " Show whether or not wrap is currently on
+set statusline+=\                            " Space
+set statusline+=%{fugitive#statusline()}     " Git branch name courtesy of Fugitive plugin
+set statusline+=%w                           " Preview window flag
+set statusline+=\                            " Space
+set statusline+=%h                           " Help buffer flag
+set statusline+=\                            " Space
+set statusline+=%y                           " Type of file
+set statusline+=\                            " Space
+set statusline+=(%l/%L,\ %c)                 " Current position and line count
+set statusline+=\                            " Space
+set statusline+=%P                           " Percent
+set statusline+=\                            " Space for padding on right side
+
+function! ShowWrap()
+  if &wrap
+    return "[Wrap]"
+  else
+    return ""
+endfunction
+
+function! ShowSpell()
+  if &spell
+    return "[Spell]"
+  else
+    return ""
+endfunction

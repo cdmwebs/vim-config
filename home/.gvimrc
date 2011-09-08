@@ -32,7 +32,7 @@ let hour = strftime("%H")
 if 6 <= hour && hour < 18
   " daytime!
   set bg=dark
-  colorscheme Tomorrow-Night
+  colorscheme railscasts
 else
   " nighttime!
   set bg=dark
