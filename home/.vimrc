@@ -45,7 +45,7 @@ endif
 
 if (&t_Co == 256)
   set bg=dark
-  colorscheme Tomorrow-Night
+  colorscheme railscasts
   highlight CursorLine cterm=NONE ctermbg=236
   highlight StatusLine term=reverse ctermfg=15 ctermbg=23 guifg=#FFFFFF guibg=#005f5f
   highlight StatusLineNC cterm=NONE ctermbg=236
@@ -232,3 +232,8 @@ function! ShowSpell()
   else
     return ""
 endfunction
+
+augroup vimrc
+  autocmd WinLeave * setlocal nocursorline
+  autocmd WinEnter,BufRead * setlocal cursorline
+augroup END
