@@ -66,3 +66,6 @@
 [submodule "home/.vim/bundle/mustache"]
 	path = home/.vim/bundle/mustache
 	url = https://github.com/juvenn/mustache.vim.git
+[submodule "home/.vim/bundle/rubytest"]
+	path = home/.vim/bundle/rubytest
+	url = https://github.com/janx/vim-rubytest.git

@@ -237,3 +237,8 @@ augroup vimrc
   autocmd WinLeave * setlocal nocursorline
   autocmd WinEnter,BufRead * setlocal cursorline
 augroup END
+
+let g:rubytest_in_quickfix = 0
+map <Leader>; <Plug>RubyTestRun
+map <Leader>R <Plug>RubyFileRun
+map <Leader><Leader> <Plug>RubyTestRunLast
