@@ -6,7 +6,7 @@ set lines=70
 let &columns=g:halfsize
 
 " Font
-set guifont=Menlo:h14.00
+set guifont=Inconsolata:h16.00
 
 " Use console dialogs
 set guioptions+=c
@@ -16,7 +16,7 @@ set guioptions-=L
 set guioptions-=r
 
 " turns the toolbar off
-set go-=T
+set guioptions-=T
 
 " tab labels
 set guitablabel=%t

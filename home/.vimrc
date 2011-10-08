@@ -14,7 +14,7 @@ let mapleader = ","
 set backspace=indent,eol,start
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Toggle NERDTree
@@ -102,7 +102,7 @@ set number
 
 set showmatch
 set wildmenu
-set wildignore+=*.o,*.obj,.git,vendor/ruby/**,vendor/jruby/**,compiled
+set wildignore+=*.o,*.obj,.git,compiled
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -192,6 +192,9 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 " always load buffers from disk
 set autoread
 
+" show tab bar
+set showtabline=2
+
 " Status Line
 set laststatus=2
 set statusline=%m                            " Modified Flag
@@ -199,6 +202,7 @@ set statusline+=%r                           " Readonly Flag
 set statusline+=\                            " Space
 set statusline+=%<                           " Truncate on the left side of text if too long
 set statusline+=%t                           " File name (Tail)
+set statusline+=\                            " Space
 set statusline+=%#warningmsg#                " Set warning highlighting
 set statusline+=%{SyntasticStatuslineFlag()} " Show syntax errors provided by syntastic plugin
 set statusline+=%*                           " clear highlighting
@@ -221,14 +225,14 @@ set statusline+=\                            " Space for padding on right side
 
 function! ShowWrap()
   if &wrap
-    return "[Wrap]"
+    return "[wrap]"
   else
     return ""
 endfunction
 
 function! ShowSpell()
   if &spell
-    return "[Spell]"
+    return "[spell]"
   else
     return ""
 endfunction
