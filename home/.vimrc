@@ -19,6 +19,8 @@ Bundle 'fugitive.vim'
 filetype plugin indent on
 syntax on
 
+set shortmess=I
+
 set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night
