@@ -3,7 +3,7 @@ set winwidth=85
 let g:halfsize=86
 let g:fullsize=171
 set lines=70
-let &columns=g:halfsize
+set columns=86
 
 " Font
 set guifont=Inconsolata:h16.00
@@ -24,20 +24,8 @@ set guitablabel=%t
 " add a cursorline
 set cursorline
 
-" maximize
-set lines=80
-set columns=250
-
-let hour = strftime("%H")
-if 6 <= hour && hour < 18
-  " daytime!
-  set bg=dark
-  colorscheme railscasts
-else
-  " nighttime!
-  set bg=dark
-  colorscheme solarized
-endif
+set bg=dark
+colorscheme Tomorrow-Night
 
 if has("gui_macvim")
   macmenu &File.New\ Tab key=<nop>
