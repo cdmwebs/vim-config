@@ -124,3 +124,8 @@ noremap <leader>f :CommandTFlush<CR>
 
 " jQuery settings
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
+" Source a local configuration file if available.
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
