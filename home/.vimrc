@@ -1,58 +1,61 @@
-" This must be first, because it changes other options as a side effect.
-set nocompatible          " We're running Vim, not Vi!
+set nocompatible               " be iMproved
+filetype off                   " required!
 
-source ~/.vim/bundle/pathogen/autoload/pathogen.vim
+" Vundle
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-rails'
+Bundle 'surround.vim'
+Bundle 'endwise.vim'
+Bundle 'vim-coffee-script'
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'jQuery'
+Bundle 'matchit.zip'
+Bundle 'ack.vim'
+Bundle 'ragtag.vim'
+Bundle 'fugitive.vim'
 
-" http://github.com/tpope/vim-pathogen
-call pathogen#helptags()
-call pathogen#infect()
+filetype plugin indent on
+syntax on
 
-" map leader to comma
-let mapleader = ","
+set shortmess=I
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+set t_Co=256
+set background=dark
+colorscheme Tomorrow-Night
 
-" Quickly edit/reload the vimrc file
+let mapleader=","
+set timeoutlen=250
+set history=256
+
+" edit .vimrc
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" Toggle NERDTree
-nmap <silent> <Leader>n :NERDTreeToggle<CR>
+" Backup
+set nowritebackup
+set nobackup
+set directory=/tmp// " prepend(^=) $HOME/.tmp/ to default path; use full path as backup filename(//)
 
-" A better escape?
-imap jj <Esc>
-
-" keep more history
-set history=100
-
-" show hidden buffers
+" Buffers
+set autoread
 set hidden
 
-" don't beep
-set visualbell
-set noerrorbells
+" Search
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+map <Space> :set hlsearch!<cr>
 
-" Syntax highlighting
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-  " sync syntax from the start of the file
-  syntax sync fromstart
-  set hlsearch
-endif
+" Completion
+set showmatch
+set wildmenu
 
-if (&t_Co == 256)
-  set bg=dark
-  colorscheme railscasts
-  highlight CursorLine cterm=NONE ctermbg=236
-  highlight StatusLine term=reverse ctermfg=15 ctermbg=23 guifg=#FFFFFF guibg=#005f5f
-  highlight StatusLineNC cterm=NONE ctermbg=236
-  set cursorline!
-else
-  colorscheme desert
-endif
+" Splits
+set splitbelow
+set splitright
 
 " Indentation and Tab handling
 set smarttab
@@ -62,137 +65,10 @@ set shiftwidth=2
 set tabstop=2
 set autoindent smartindent
 
-" Line Wrapping
-set nowrap
-set linebreak             " Wrap at word
+" Backspace
+set backspace=indent,eol,start
 
-" Search results
-set incsearch             " incremental searching
-set ignorecase            " case insensitive searching
-set smartcase
-
-" Toggle search results with spacebar
-map <Space> :set hlsearch!<cr>
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" catch trailing whitespace
-set list listchars=tab:\ \ ,trail:·
-nmap <silent> <leader>s :set nolist!<CR>
-
-" Swapfiles. Fuck 'em.
-set nobackup
-set noswapfile
-set nowritebackup
-
-" show incomplete commands
-set showcmd
-
-" Split windows behavior
-set splitbelow
-set splitright
-
-" chill the press ENTER or type command to continue stuff
-set shortmess=atI
-
-set ruler
-set undolevels=1000
-set number
-
-set showmatch
-set wildmenu
-set wildignore+=*.o,*.obj,.git,compiled
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-    autocmd!
-
-    " For all text files set 'textwidth' to 78 characters.
-    autocmd FileType text setlocal textwidth=78
-
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \ exe "normal g`\"" |
-      \ endif
-  augroup END
-
-  augroup myfiletypes
-    " Clear old autocmds in group
-    autocmd!
-    " autoindent with two spaces, always expand tabs
-    autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
-    autocmd FileType javascript set ai sw=4 sts=4 et
-  augroup END
-else
-  set autoindent    " always set autoindenting on
-endif " has("autocmd")
-
-if has("folding")
-  set foldenable
-  set foldmethod=syntax
-  set foldlevel=3
-  " set foldnestmax=2
-  " set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
-  set foldcolumn=0
-
-  " automatically open folds at the starting cursor position
-  " autocmd BufReadPost .foldo!
-endif
-
-" Load matchit (% to bounce from do to end, etc.)
-runtime! macros/matchit.vim
-
-" These are ruby files
-au BufNewFile,BufRead *.prawn,Sitefile set filetype=ruby
-
-" Clean up whitespace
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
-
-" syntastic
-let g:syntastic_enable_signs=1
-
-" taglist
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-let Tlist_WinWidth = 50
-map <leader>a :TlistToggle<cr>
-map <leader>A :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
-" completion
-inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-      \ "\<lt>C-n>" :
-      \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-      \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-      \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-imap <C-@> <C-Space>
-
-" command-t settings
-let g:CommandTMaxHeight=20
-let g:CommandTMatchWindowReverse=1
-noremap <leader>f :CommandTFlush<CR>
-
-" undo
-set undodir=~/.vim/undodir
-set undofile
-set undolevels=1000 "maximum number of changes that can be undone
-set undoreload=10000 "maximum number lines to save for undo on a buffer reload
-
-" always load buffers from disk
-set autoread
-
-" show tab bar
+" Tab bar
 set showtabline=2
 
 " Status Line
@@ -202,20 +78,11 @@ set statusline+=%r                           " Readonly Flag
 set statusline+=\                            " Space
 set statusline+=%<                           " Truncate on the left side of text if too long
 set statusline+=%t                           " File name (Tail)
-set statusline+=\                            " Space
-set statusline+=%#warningmsg#                " Set warning highlighting
-set statusline+=%{SyntasticStatuslineFlag()} " Show syntax errors provided by syntastic plugin
-set statusline+=%*                           " clear highlighting
 set statusline+=%=                           " Right Align
 set statusline+=%{ShowSpell()}               " Show whether or not spell is currently on
-set statusline+=\                            " Space
 set statusline+=%{ShowWrap()}                " Show whether or not wrap is currently on
-set statusline+=\                            " Space
-set statusline+=%{fugitive#statusline()}     " Git branch name courtesy of Fugitive plugin
 set statusline+=%w                           " Preview window flag
-set statusline+=\                            " Space
 set statusline+=%h                           " Help buffer flag
-set statusline+=\                            " Space
 set statusline+=%y                           " Type of file
 set statusline+=\                            " Space
 set statusline+=(%l/%L,\ %c)                 " Current position and line count
@@ -237,12 +104,23 @@ function! ShowSpell()
     return ""
 endfunction
 
-augroup vimrc
-  autocmd WinLeave * setlocal nocursorline
-  autocmd WinEnter,BufRead * setlocal cursorline
-augroup END
+" colors
+highlight CursorLine cterm=NONE ctermbg=236
+highlight StatusLine term=reverse ctermfg=65 ctermbg=255 guifg=#FFFFFF guibg=#005f5f
+highlight StatusLineNC cterm=NONE ctermfg=250 ctermbg=239
+highlight TabLineFill ctermfg=239
+highlight LineNr ctermfg=65
+set cursorline!
 
-let g:rubytest_in_quickfix = 0
-map <Leader>; <Plug>RubyTestRun
-map <Leader>R <Plug>RubyFileRun
-map <Leader><Leader> <Plug>RubyTestRunLast
+" whitespace
+set nolist listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:«
+nmap <silent> <leader>s :set nolist!<CR>
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+
+" command-t settings
+let g:CommandTMaxHeight=20
+let g:CommandTMatchWindowReverse=1
+noremap <leader>f :CommandTFlush<CR>
+
+" jQuery settings
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery

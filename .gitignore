@@ -1,7 +1,2 @@
 home/.vim/.netrwhist
-home/.vim/bundle/bespin
-home/.vim/bundle/vwilight
-home/.vim/bundle/jquery
-home/.vim/bundle/json
-home/.vim/bundle/railscasts
-home/.vim/bundle/vibrantink
+home/.vim/bundle/*
