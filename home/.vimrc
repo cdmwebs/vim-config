@@ -16,6 +16,7 @@ Bundle 'ack.vim'
 Bundle 'ragtag.vim'
 Bundle 'fugitive.vim'
 Bundle 'https://github.com/jgdavey/vim-railscasts.git'
+Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 syntax on
