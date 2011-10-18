@@ -15,6 +15,7 @@ Bundle 'matchit.zip'
 Bundle 'ack.vim'
 Bundle 'ragtag.vim'
 Bundle 'fugitive.vim'
+Bundle 'https://github.com/jgdavey/vim-railscasts.git'
 
 filetype plugin indent on
 syntax on
