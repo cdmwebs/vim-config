@@ -25,7 +25,7 @@ set shortmess=I
 
 set t_Co=256
 set background=dark
-colorscheme Tomorrow-Night
+colorscheme railscasts
 
 let mapleader=","
 set timeoutlen=250
@@ -107,7 +107,7 @@ function! ShowSpell()
 endfunction
 
 " colors
-highlight CursorLine cterm=NONE ctermbg=236
+highlight CursorLine cterm=NONE ctermbg=0
 highlight StatusLine term=reverse ctermfg=65 ctermbg=255 guifg=#FFFFFF guibg=#005f5f
 highlight StatusLineNC cterm=NONE ctermfg=250 ctermbg=239
 highlight TabLineFill ctermfg=239
@@ -124,8 +124,19 @@ let g:CommandTMaxHeight=20
 let g:CommandTMatchWindowReverse=1
 noremap <leader>f :CommandTFlush<CR>
 
-" jQuery settings
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+if has("autocmd")
+  " jQuery settings
+  au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
+  " handlebars
+  au BufNewFile,BufRead *.handlebars.* set filetype=handlebars
+
+  " Jimfile
+  au BufNewFile,BufRead Jimfile set filetype=javascript
+
+  " ruby. why.
+  au BufNewFile,BufRead Vagrantfile set filetype=ruby
+endif
 
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))

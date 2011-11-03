@@ -25,7 +25,7 @@ set guitablabel=%t
 set cursorline
 
 set bg=dark
-colorscheme Tomorrow-Night
+colorscheme railscasts
 
 if has("gui_macvim")
   macmenu &File.New\ Tab key=<nop>
