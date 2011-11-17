@@ -4,6 +4,7 @@ filetype off                   " required!
 " Vundle
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-rails'
 Bundle 'surround.vim'
@@ -30,6 +31,8 @@ colorscheme railscasts
 let mapleader=","
 set timeoutlen=250
 set history=256
+
+set nowrap
 
 " edit .vimrc
 nmap <silent> <leader>ev :vsplit $MYVIMRC<CR>
@@ -122,6 +125,8 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:
 " command-t settings
 let g:CommandTMaxHeight=20
 let g:CommandTMatchWindowReverse=1
+let g:CommandTAcceptSelectionSplitMap=['<C-s>', '<C-CR>']
+let g:CommandTCancelMap=['<C-c>', '<Esc>']
 noremap <leader>f :CommandTFlush<CR>
 
 if has("autocmd")
