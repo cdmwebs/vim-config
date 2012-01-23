@@ -26,7 +26,7 @@ set shortmess=I
 
 set t_Co=256
 set background=dark
-colorscheme railscasts
+colorscheme grb256
 
 let mapleader=","
 set timeoutlen=250
