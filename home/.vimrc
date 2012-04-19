@@ -140,7 +140,7 @@ if has("autocmd")
   au BufNewFile,BufRead Jimfile set filetype=javascript
 
   " ruby. why.
-  au BufNewFile,BufRead Vagrantfile set filetype=ruby
+  au BufNewFile,BufRead Vagrantfile,Podfile set filetype=ruby
 endif
 
 " Source a local configuration file if available.
