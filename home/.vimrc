@@ -19,6 +19,8 @@ Bundle 'fugitive.vim'
 Bundle 'https://github.com/jgdavey/vim-railscasts.git'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'eraserhd/vim-ios'
+Bundle 'godlygeek/tabular'
+Bundle 'kien/ctrlp.vim'
 
 filetype plugin indent on
 syntax on
