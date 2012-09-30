@@ -31,6 +31,8 @@ set t_Co=256
 set background=dark
 colorscheme grb256
 
+set nu
+
 let mapleader=","
 set timeoutlen=250
 set history=256
