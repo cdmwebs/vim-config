@@ -21,6 +21,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'eraserhd/vim-ios'
 Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/vim-powerline'
 
 filetype plugin indent on
 syntax on
@@ -82,23 +83,8 @@ set backspace=indent,eol,start
 set showtabline=2
 
 " Status Line
+set encoding=utf-8
 set laststatus=2
-set statusline=%m                            " Modified Flag
-set statusline+=%r                           " Readonly Flag
-set statusline+=\                            " Space
-set statusline+=%<                           " Truncate on the left side of text if too long
-set statusline+=%t                           " File name (Tail)
-set statusline+=%=                           " Right Align
-set statusline+=%{ShowSpell()}               " Show whether or not spell is currently on
-set statusline+=%{ShowWrap()}                " Show whether or not wrap is currently on
-set statusline+=%w                           " Preview window flag
-set statusline+=%h                           " Help buffer flag
-set statusline+=%y                           " Type of file
-set statusline+=\                            " Space
-set statusline+=(%l/%L,\ %c)                 " Current position and line count
-set statusline+=\                            " Space
-set statusline+=%P                           " Percent
-set statusline+=\                            " Space for padding on right side
 
 function! ShowWrap()
   if &wrap
