@@ -20,7 +20,7 @@ set guioptions-=T
 
 " tab labels
 set guitablabel=%t
-set showtabline=0
+"set showtabline=0
 
 " add a cursorline
 set cursorline
