@@ -157,7 +157,6 @@ set mouse=a
 
 let g:netrw_liststyle=3
 
-
 " can haz spell
 iab inpsection inspection
 iab Inpsection Inspection
