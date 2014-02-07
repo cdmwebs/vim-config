@@ -1,6 +1,8 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
+set shell=/bin/bash
+
 " Vundle
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
