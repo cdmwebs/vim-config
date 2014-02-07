@@ -124,18 +124,24 @@ let g:CommandTAcceptSelectionSplitMap=['<C-s>', '<C-CR>']
 let g:CommandTCancelMap=['<C-c>', '<Esc>']
 noremap <leader>f :CommandTFlush<CR>
 
+" ctrlp settings
+let g:ctrlp_custom_ignore = '\.git$\|'
+let g:ctrlp_custom_ignore .= '\vendor/ruby$\|'
+let g:ctrlp_custom_ignore .= '\.tmp$\|'
+let g:ctrlp_custom_ignore .= '\.DS_Store$'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
 if has("autocmd")
   " jQuery settings
   au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
-  " handlebars
-  au BufNewFile,BufRead *.handlebars.* set filetype=handlebars
-
-  " Jimfile
-  au BufNewFile,BufRead Jimfile set filetype=javascript
-
   " ruby. why.
   au BufNewFile,BufRead Vagrantfile,Podfile set filetype=ruby
+
+  au BufNewFile,BufRead *.ejs set filetype=eruby
+
+  au BufNewFile,BufRead *.md set filetype=markdown tw=72
+  au BufNewFile,BufRead *.hb set filetype=mustache
 endif
 
 " Source a local configuration file if available.
@@ -146,7 +152,13 @@ endif
 set mouse=a
 
 let g:netrw_liststyle=3
+let g:netrw_preview=1
 
 " can haz spell
 iab inpsection inspection
 iab Inpsection Inspection
+
+let g:dash_map = {
+  \ 'ruby'       : 'rails',
+  \ 'javascript' : 'ember'
+  \ }
