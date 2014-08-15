@@ -26,6 +26,11 @@ Bundle 'othree/html5.vim'
 Bundle 'guns/vim-clojure-static'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+Bundle 'rodjek/vim-puppet'
+Bundle 'Keithbsmiley/rspec.vim'
+Bundle 'elzr/vim-json'
+Bundle 'groenewege/vim-less'
+Bundle 'slim-template/vim-slim'
 
 filetype plugin indent on
 syntax on
@@ -34,7 +39,7 @@ set shortmess=I
 
 set t_Co=256
 set background=dark
-colorscheme grb256
+colorscheme railscasts
 
 set nu
 
@@ -129,7 +134,18 @@ let g:ctrlp_custom_ignore = '\.git$\|'
 let g:ctrlp_custom_ignore .= '\vendor/ruby$\|'
 let g:ctrlp_custom_ignore .= '\.tmp$\|'
 let g:ctrlp_custom_ignore .= '\.DS_Store$'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 if has("autocmd")
   " jQuery settings
