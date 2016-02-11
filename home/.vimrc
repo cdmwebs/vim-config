@@ -1,52 +1,35 @@
-set nocompatible               " be iMproved
 filetype off                   " required!
 
-set shell=/bin/bash
-
 " Vundle
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-vinegar'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-fugitive'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/ctrlp.vim'
-Bundle 'matchit.zip'
-Bundle 'epmatsw/ag.vim'
-Bundle 'jgdavey/vim-railscasts'
-Bundle 'godlygeek/tabular'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'othree/html5.vim'
-Bundle 'guns/vim-clojure-static'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
-Bundle 'rodjek/vim-puppet'
-Bundle 'Keithbsmiley/rspec.vim'
-Bundle 'elzr/vim-json'
-Bundle 'groenewege/vim-less'
-Bundle 'slim-template/vim-slim'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-rails'
+Plugin 'kien/ctrlp.vim'
+Plugin 'jgdavey/vim-railscasts'
+Plugin 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'janx/vim-rubytest'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'romainl/Apprentice'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'hwartig/vim-seeing-is-believing'
+call vundle#end()
 
 filetype plugin indent on
 syntax on
 
-set shortmess=I
-
-set t_Co=256
 set background=dark
 colorscheme railscasts
 
 set nu
-
-let mapleader=","
-set timeoutlen=250
+set mouse=a
 set history=256
-
 set nowrap
 
 " edit .vimrc
@@ -89,83 +72,36 @@ set autoindent smartindent
 set backspace=indent,eol,start
 
 " Tab bar
-set showtabline=2
+" set showtabline=2
 
 " Status Line
 set encoding=utf-8
 set laststatus=2
 
-function! ShowWrap()
-  if &wrap
-    return "[wrap]"
-  else
-    return ""
-endfunction
-
-function! ShowSpell()
-  if &spell
-    return "[spell]"
-  else
-    return ""
-endfunction
-
 " colors
-highlight CursorLine cterm=NONE ctermbg=0
-highlight StatusLine term=reverse ctermfg=65 ctermbg=255 guifg=#FFFFFF guibg=#005f5f
-highlight StatusLineNC cterm=NONE ctermfg=250 ctermbg=239
-highlight TabLineFill ctermfg=239
-highlight LineNr ctermfg=65
+" highlight CursorLine cterm=NONE ctermbg=0
+" highlight StatusLine term=reverse ctermfg=65 ctermbg=255 guifg=#FFFFFF guibg=#005f5f
+" highlight StatusLineNC cterm=NONE ctermfg=250 ctermbg=239
+" highlight TabLineFill ctermfg=239
+" highlight LineNr ctermfg=65
 set cursorline!
 
 " whitespace
 set nolist listchars=tab:·\ ,eol:¶,trail:·,extends:»,precedes:«
-nmap <silent> <leader>s :set nolist!<CR>
+nmap <silent> <leader>sl :set nolist!<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
-" command-t settings
-let g:CommandTMaxHeight=20
-let g:CommandTMatchWindowReverse=1
-let g:CommandTAcceptSelectionSplitMap=['<C-s>', '<C-CR>']
-let g:CommandTCancelMap=['<C-c>', '<Esc>']
-noremap <leader>f :CommandTFlush<CR>
-
-" ctrlp settings
-let g:ctrlp_custom_ignore = '\.git$\|'
-let g:ctrlp_custom_ignore .= '\vendor/ruby$\|'
-let g:ctrlp_custom_ignore .= '\.tmp$\|'
-let g:ctrlp_custom_ignore .= '\.DS_Store$'
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+set wildignore+=*/vendor/ruby
+set wildignore+=*/vendor/cache
 
 if has("autocmd")
-  " jQuery settings
-  au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
-  " ruby. why.
-  au BufNewFile,BufRead Vagrantfile,Podfile set filetype=ruby
-
-  au BufNewFile,BufRead *.ejs set filetype=eruby
-
   au BufNewFile,BufRead *.md set filetype=markdown tw=72
-  au BufNewFile,BufRead *.hb set filetype=mustache
 endif
 
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
-set mouse=a
 
 let g:netrw_liststyle=3
 let g:netrw_preview=1
@@ -174,7 +110,23 @@ let g:netrw_preview=1
 iab inpsection inspection
 iab Inpsection Inspection
 
-let g:dash_map = {
-  \ 'ruby'       : 'rails',
-  \ 'javascript' : 'ember'
-  \ }
+let g:rubytest_cmd_test = "/opt/boxen/rbenv/shims/ruby -w -I'lib:test'  %p"
+let g:rubytest_cmd_testcase = "/opt/boxen/rbenv/shims/ruby -w -I'lib:test' %p -n '/%c/'"
+
+let g:ctrlp_user_command = 'find %s -type f'
+
+" .vimrc Enable seeing-is-believing mappings only for Ruby
+augroup seeingIsBelievingSettings
+  autocmd!
+
+  autocmd FileType ruby nmap <buffer> <Enter> <Plug>(seeing-is-believing-mark-and-run)
+  autocmd FileType ruby xmap <buffer> <Enter> <Plug>(seeing-is-believing-mark-and-run)
+
+  autocmd FileType ruby nmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+  autocmd FileType ruby xmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+  autocmd FileType ruby imap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+
+  autocmd FileType ruby nmap <buffer> <F5> <Plug>(seeing-is-believing-run)
+  autocmd FileType ruby imap <buffer> <F5> <Plug>(seeing-is-believing-run)
+augroup END
+
